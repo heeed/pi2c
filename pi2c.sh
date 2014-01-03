@@ -34,16 +34,9 @@ Setting up the i2c interface for use on the Raspberry Pi....\n
 ##############################################################\n"
 
 
-echo -e "${DEFT}Please enter your root password to allow setup (This will only be for this setup):\n"
+echo -e "${DEFT}First, lets see if the i2c packages are installed...\n"
 
-stty -echo
-read password
-stty echo
-
-
-echo -e "First, lets see if the i2c packages are installed...\n"
-
-dpkg -l 'i2c-tools' > /dev/null 2>&1 
+dpkg -l 'i2c-tools' | grep ^ii > /dev/null 2>&1
 INSTALLED=$?
 
 if [ $INSTALLED == '0' ]; then
