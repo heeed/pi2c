@@ -87,5 +87,5 @@ else
 fi
 
 echo -e "${DEFT}All done\n"
-echo -e "Please reboot me now by typing reboot and pressing enter"
+echo -e "Please reboot me now by typing sudo reboot and pressing enter"
 
