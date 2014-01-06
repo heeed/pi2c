@@ -56,14 +56,24 @@ if [ $PY_INSTALLED == '0' ]; then
         sudo apt-get -qq  install 'python-smbus'
     fi
 
-echo -e "${DEFT}Thirdly, Will now check if i2c is disabled on the Pi:\n"
+echo -e "${DEFT}Thirdly, Will now check if SPI is disabled on the Pi:\n"
 
-if grep -qnx '#blacklist spi-bcm2708' /etc/modprobe.d/raspi-blacklist.conf; then
-        echo -e "${RED}It looks like i2c is not enabled on this Pi\n Enabling....\n"
-        sudo sed -i '/#blacklist spi-bcm2708/c\blacklist spi-bcm2708' /etc/modprobe.d/raspi-blacklist.conf
+if grep -qnx 'blacklist spi-bcm2708' /etc/modprobe.d/raspi-blacklist.conf; then
+        echo -e "${RED}It looks like spi is not enabled on this Pi\n Enabling....\n"
+        sudo sed -i '/blacklist spi-bcm2708/c\#blacklist spi-bcm2708' /etc/modprobe.d/raspi-blacklist.conf
     else
-        echo -e "${GREEN}It looks i2c is enabled on this Pi\n"
+        echo -e "${GREEN}It looks like SPI is enabled on this Pi\n"
     fi
+
+echo -e "${DEFT}Fourthly, Will now check if i2c is disabled on the Pi:\n"
+
+if grep -qnx 'blacklist i2c-bcm2708' /etc/modprobe.d/raspi-blacklist.conf; then
+        echo -e "${RED}It looks like i2c is not enabled on this Pi\n Enabling....\n"
+        sudo sed -i '/blacklist i2c-bcm2708/c\#blacklist i2c-bcm2708' /etc/modprobe.d/raspi-blacklist.conf
+    else
+        echo -e "${GREEN}It looks like i2c is enabled on this Pi\n"
+    fi
+
 
 echo -e "${DEFT}Is i2c set to load on boot?:\n"
 
