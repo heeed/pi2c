@@ -1,3 +1,7 @@
+pi2c - i2c setup on the raspberry pi version 0.1
+copyright 2014 Michael Rimicans @heeedt
+
+
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
@@ -18,9 +22,25 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 | '_ \| | __) / __|
 | |_) | |/ __/ (__
 | .__/|_|_____\___|
-|_|
+|_|...........LOCAL
 
 Setting up the i2c interface for use on the Raspberry Pi....
+
+Note: This is an offline installer - It will require that
+
+	i2c-tools_3.1.0-2_armhf.deb
+	
+	python-smbus_3.1.0-2_armhf.deb
+
+....are already downloaded into ./local and ready for use
+##############################################################
+
+To download the required packages use the following commands:
+
+	sudo apt-get download python-smbus
+	
+	sudo apt-get download i2c-tools
+
 #############################################################
 version 0.2
 
@@ -50,11 +70,11 @@ Usage:
 
 	1: Make it executable:
 		
-		chmod +x pi2c.sh
-	
+		chmod +x pi2c_local.sh
+
 	2: Run it:
 
-		./pi2c.sh
+		./pi2c_local.sh
 
 	3: Make things :)
 
